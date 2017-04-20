@@ -1,0 +1,28 @@
+CREATE TABLESPACE big_tbl_dennis
+DATAFILE 'dennis_01.dbf' SIZE 1G
+EXTENT MANAGEMENT LOCAL
+SEGMENT SPACE MANAGEMENT AUTO;
+
+
+CREATE TABLESPACE quiz
+DATAFILE 
+'quiz_01.dbf' SIZE 200M,
+'quiz_02.dbf' SIZE 200M,
+'quiz_03.dbf' SIZE 200M
+AUTOEXTEND ON NEXT 600M MAXSIZE 1000M;
+ 
+
+
+CREATE PROFILE dennis_garro LIMIT
+PASSWORD_LIFE_TIME              unlimited
+SESSIONS_PER_USER               unlimited
+IDLE_TIME                       15
+FAILED_LOGIN_ATTEMPTS           unlimited
+ 
+ 
+CREATE USER garro
+IDENTIFIED BY garro
+DEFAULT tablespace quiz
+PROFILE dennis_garro;
+ 
+  
